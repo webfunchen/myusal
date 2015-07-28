@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title></title>
+<title>弹窗</title>
 <head>    
 <link type="text/css" href="http://assets.taobaocdn.com/tbsp/reset-grids.css" rel="stylesheet" />
 <script src="http://g.tbcdn.cn/??kissy/k/1.4.1/seed-min.js,mui/global/1.2.35/global.js"></script>
@@ -17,14 +17,11 @@ a{ blr:expression(this.onFocus=this.blur()); /* IE Opera */ outline:none; /* FF 
 area:focus{ -moz-outline-style: none; /* FF */ }
 area{ blr:expression(this.onFocus=this.blur()); /* IE Opera */ outline:none; /* FF Opera */ }
 area:focus{ -moz-outline-style: none; /* FF */ }
-
-
 /*弹窗*/
 .cps-mask{background:url("http://gtms01.alicdn.com/tps/i1/TB1NiJhGFXXXXaSXXXX301JJFXX-4-4.png") repeat;height:100%;left: 0;position: fixed;top: 0;width: 100%;display:none;z-index:999;}
 .cps-mask-title{height:40px;position:relative;z-index:1;background-color:#a50303;}
 .cps-mask-close{width:23px;height:23px;position:absolute;top:8px;right:10px;background:url("http://gtms04.alicdn.com/tps/i4/TB1oLf.GpXXXXazXXXXSmdpFFXX-23-24.png");display:block;cursor:pointer;}
 .cps-mask-content{border:5px solid #555;background:#fff;}
-
 </style>
 </head>
 <body>
@@ -74,7 +71,6 @@ KISSY.add("mobilemask",function(S,Node){
 }
 )
 KISSY.use("node,mobilemask",function(S,Node,_Maskmoblie){
-  
   var mask1=new _Maskmoblie({
     width:280,
     height:400,
@@ -84,7 +80,6 @@ KISSY.use("node,mobilemask",function(S,Node,_Maskmoblie){
     mask1.render();
     mask1.show();
   });
-  
 });
 
 </script>

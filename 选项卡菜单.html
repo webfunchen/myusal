@@ -1,116 +1,197 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>选项卡式菜单</title>
-<link rel="stylesheet" href="http://g.tbcdn.cn/??tb/global/2.6.10/global-min.css,tb/tb-fp/1.8.3/style-min.css?t=20140305" type="text/css" />
-<style type="text/css">
-
-/*选项卡菜单*/
-.by_select1{width:800px;height:auto;overflow:hidden;margin:10px}
-.by_select1 .by_select_menu{height:29px;line-height:29px;border-bottom:1px solid #333}    
-.by_select1 .by_select_menu li{height:28px;border:1px solid #333;width:120px;text-align:center;color:#333;float:left;margin:0 5px;border-radius:3px 3px 0 0;cursor:pointer;}  
-.by_select1 .by_select_menu li.active{border-bottom-color:#fff;}
-.by_select1 .by_select_content{height:200px;overflow:hidden;padding:10px;border:1px solid #333;border-top:none;}
-.by_select1 .by_select_content li.by_selectli{height:auto;overflow:hidden;display:none;}  
-.by_select1 .by_select_content li.active{display:block;} 
-    
-.by_select2{width:500px;height:auto;overflow:hidden;margin:10px}
-.by_select2 .by_select_menu{height:29px;line-height:29px;border-bottom:1px solid #ccc}    
-.by_select2 .by_select_menu li{height:28px;border:1px solid #ccc;width:100px;text-align:center;color:#0fc3fe;float:left;margin:0 3px;border-radius:3px 3px 0 0;cursor:pointer;overflow:hidden;background:#efefef;}  
-.by_select2 .by_select_menu li.active{border-bottom-color:#fff;background:#fff}
-.by_select2 .by_select_content{height:200px;overflow:hidden;padding:10px;border:1px solid #ccc;border-top:none;}
-.by_select2 .by_select_content li.by_selectli{height:auto;overflow:hidden;display:none;}  
-.by_select2 .by_select_content li.active{display:block;}     
-</style>
-<script src="http://g.tbcdn.cn/??kissy/k/1.4.0/seed-min.js,tb/global/2.6.12/global-min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>选项卡式菜单</title>
+	<link rel="stylesheet" href="http://g.tbcdn.cn/??tb/global/2.6.10/global-min.css,tb/tb-fp/1.8.3/style-min.css?t=20140305" type="text/css" />
+	<style type="text/css">
+		/*选项卡菜单*/
+		
+		.by_select1 {
+			width: 800px;
+			height: auto;
+			overflow: hidden;
+			margin: 10px
+		}
+		
+		.by_select1 .by_select_menu {
+			height: 29px;
+			line-height: 29px;
+			border-bottom: 1px solid #333
+		}
+		
+		.by_select1 .by_select_menu li {
+			height: 28px;
+			border: 1px solid #333;
+			width: 120px;
+			text-align: center;
+			color: #333;
+			float: left;
+			margin: 0 5px;
+			border-radius: 3px 3px 0 0;
+			cursor: pointer;
+		}
+		
+		.by_select1 .by_select_menu li.active {
+			border-bottom-color: #fff;
+		}
+		
+		.by_select1 .by_select_content {
+			height: 200px;
+			overflow: hidden;
+			padding: 10px;
+			border: 1px solid #333;
+			border-top: none;
+		}
+		
+		.by_select1 .by_select_content li.by_selectli {
+			height: auto;
+			overflow: hidden;
+			display: none;
+		}
+		
+		.by_select1 .by_select_content li.active {
+			display: block;
+		}
+		
+		.by_select2 {
+			width: 500px;
+			height: auto;
+			overflow: hidden;
+			margin: 10px
+		}
+		
+		.by_select2 .by_select_menu {
+			height: 29px;
+			line-height: 29px;
+			border-bottom: 1px solid #ccc
+		}
+		
+		.by_select2 .by_select_menu li {
+			height: 28px;
+			border: 1px solid #ccc;
+			width: 100px;
+			text-align: center;
+			color: #0fc3fe;
+			float: left;
+			margin: 0 3px;
+			border-radius: 3px 3px 0 0;
+			cursor: pointer;
+			overflow: hidden;
+			background: #efefef;
+		}
+		
+		.by_select2 .by_select_menu li.active {
+			border-bottom-color: #fff;
+			background: #fff
+		}
+		
+		.by_select2 .by_select_content {
+			height: 200px;
+			overflow: hidden;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-top: none;
+		}
+		
+		.by_select2 .by_select_content li.by_selectli {
+			height: auto;
+			overflow: hidden;
+			display: none;
+		}
+		
+		.by_select2 .by_select_content li.active {
+			display: block;
+		}
+	</style>
+	<script src="http://g.tbcdn.cn/??kissy/k/1.4.0/seed-min.js,tb/global/2.6.12/global-min.js"></script>
 </head>
-
 <body>
-<!--模板-->
-<!--组件依赖html结构，可自定义-->
-<div class="by_select by_select1">
-    <ul class="by_select_menu">
-        <li class="active">选项卡一</li>
-        <li>选项卡二</li>
-        <li>选项卡三</li>
-        <li>选项卡四</li>
-    </ul>
-    <ul class="by_select_content">
-        <li class="by_selectli active">
-            <p>选项卡内容一</p>
-        </li>
-        <li class="by_selectli">
-            <p>选项卡内容二</p>
-        </li>
-        <li class="by_selectli">
-            <p>选项卡内容三</p>
-        </li>
-        <li class="by_selectli">
-            <p>选项卡内容四</p>
-        </li>
-    </ul>
-</div> 
-
-<div class="by_select by_select2">
-    <ul class="by_select_menu">
-        <li class="active">选项卡一</li>
-        <li>选项卡二</li>
-        <li>选项卡三</li>
-    </ul>
-    <ul class="by_select_content">
-        <li class="by_selectli active">
-            <p>选项卡内容一</p>
-        </li>
-        <li class="by_selectli">
-            <p>选项卡内容二</p>
-        </li>
-        <li class="by_selectli">
-            <p>选项卡内容三</p>
-        </li>
-    </ul>
-</div>     
-    
-<!------>  
-<script>
-KISSY.add("switchtabs",function(S,Node){
-    var $=S.all;
-    var switchtabs=function(obj){
-        this.obj=$(obj.pobj)||$(".by_select1");
-        this.cobj=this.obj.all(obj.cobj)||this.obj.all(".by_selectli");
-        this.trigger=obj.trigger||"click";
-        this.init();
-    };
-    switchtabs.prototype={
-        init:function(){
-            var o=this;
-            o.obj.all(".by_select_menu li").on(o.trigger,function(){
-              var pobj=$(this).parent();    
-              pobj.all(".by_select_menu li").removeClass("active");
-              $(this).addClass("active");
-              var xh=$(this).parent().all("li").index($(this));
-              pobj.parent().all(".by_select_content li").removeClass("active");
-              pobj.parent().all(".by_selectli").item(xh).addClass("active")    
-            });
-        }
-    }
-    return switchtabs;
-},{require:['node']});
-</script>  
-<script>
-KISSY.use("node,switchtabs",function(S,Node,Swt){
-    var $=S.all;
-    var swt1=new Swt({
-        pobj:".by_select1",
-        cobj:".by_selectli",
-        trigger:"click"
-    });
-    var swt2=new Swt({
-        pobj:".by_select2",
-        cobj:".by_selectli",
-        trigger:"mouseenter"
-    });
-});
-</script>
+	<!--模板-->
+	<!--组件依赖html结构，可自定义-->
+	<div class="by_select by_select1">
+		<ul class="by_select_menu">
+			<li class="active">选项卡一</li>
+			<li>选项卡二</li>
+			<li>选项卡三</li>
+			<li>选项卡四</li>
+		</ul>
+		<ul class="by_select_content">
+			<li class="by_selectli active">
+				<p>选项卡内容一</p>
+			</li>
+			<li class="by_selectli">
+				<p>选项卡内容二</p>
+			</li>
+			<li class="by_selectli">
+				<p>选项卡内容三</p>
+			</li>
+			<li class="by_selectli">
+				<p>选项卡内容四</p>
+			</li>
+		</ul>
+	</div>
+	<div class="by_select by_select2">
+		<ul class="by_select_menu">
+			<li class="active">选项卡一</li>
+			<li>选项卡二</li>
+			<li>选项卡三</li>
+		</ul>
+		<ul class="by_select_content">
+			<li class="by_selectli active">
+				<p>选项卡内容一</p>
+			</li>
+			<li class="by_selectli">
+				<p>选项卡内容二</p>
+			</li>
+			<li class="by_selectli">
+				<p>选项卡内容三</p>
+			</li>
+		</ul>
+	</div>
+	<!------>
+	<script>
+		KISSY.add("switchtabs", function (S, Node) {
+			var $ = S.all;
+			var switchtabs = function (obj) {
+				this.obj = $(obj.pobj) || $(".by_select1");
+				this.cobj = this.obj.all(obj.cobj) || this.obj.all(".by_selectli");
+				this.trigger = obj.trigger || "click";
+				this.init();
+			};
+			switchtabs.prototype = {
+				init: function () {
+					var o = this;
+					o.obj.all(".by_select_menu li").on(o.trigger, function () {
+						var pobj = $(this).parent();
+						pobj.all(".by_select_menu li").removeClass("active");
+						$(this).addClass("active");
+						var xh = $(this).parent().all("li").index($(this));
+						pobj.parent().all(".by_select_content li").removeClass("active");
+						pobj.parent().all(".by_selectli").item(xh).addClass("active")
+					});
+				}
+			}
+			return switchtabs;
+		}, {
+			require: ['node']
+		});
+	</script>
+	<script>
+		KISSY.use("node,switchtabs", function (S, Node, Swt) {
+			var $ = S.all;
+			var swt1 = new Swt({
+				pobj: ".by_select1",
+				cobj: ".by_selectli",
+				trigger: "click"
+			});
+			var swt2 = new Swt({
+				pobj: ".by_select2",
+				cobj: ".by_selectli",
+				trigger: "mouseenter"
+			});
+		});
+	</script>
 </body>
 </html>

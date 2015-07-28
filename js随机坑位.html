@@ -8,7 +8,6 @@
 body{padding:20px;}
 </style>    
 <script src="http://g.tbcdn.cn/kissy/k/1.4.0/seed-min.js?t=20140820"></script>
-
 </head>
 <body>
 ------------以下三组为排序--组件依赖的html结构,复杂结构慎用----------<br />
@@ -41,7 +40,6 @@ body{padding:20px;}
 KISSY.add("js_sort",function(S,Node){
 /*
 *********KISSY版本：1.4.X**********
-
 @author:陈攀松
 @name:js根据指定的序号排序，或者随机
 @param obj排序对象属性包含obj.pa:父节点的class名,obj.node:子节点的class名,obj.me:排序方式,0:随机,1:正序,2:倒序;示例:{pa:"sortwrapper2",node:"sort2",me:2}
@@ -87,10 +85,8 @@ KISSY.add("js_sort",function(S,Node){
 },{require:['node']});
 </script>
 <script>
-
 KISSY.use('node,js_sort',function(S,Node,_Sort){
 var $=S.all;
-
 var sort1=new _Sort({
 				pa:"sortwrapper",
 				node:"sort",
@@ -100,7 +96,6 @@ var sort1=new _Sort({
 $(".J_resort").on("click",function(){
 	sort1.sorts();
 });
-
 var sort2=new _Sort({
 				pa:"sortwrapper1",
 				node:"sort1",

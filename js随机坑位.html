@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js随机坑位</title>
+<link rel="stylesheet" href="http://g.tbcdn.cn/??tb/global/2.6.10/global-min.css,tb/tb-fp/1.8.3/style-min.css?t=20140305" type="text/css" />
+<style type="text/css">
+body{padding:20px;}
+</style>    
+<script src="http://g.tbcdn.cn/kissy/k/1.4.0/seed-min.js?t=20140820"></script>
+
+</head>
+<body>
+------------以下三组为排序--组件依赖的html结构,复杂结构慎用----------<br />
+-----------------随机-----------------
+<div class="sortwrapper">
+	<div class="sort" data-xh="0">0</div>
+	<div class="sort" data-xh="1">1</div>
+	<div class="sort" data-xh="2">2</div>
+	<div class="sort" data-xh="3">3</div>
+	<div class="sort" data-xh="4">4</div>
+</div>
+-----------------顺序-----------------
+<div class="sortwrapper1">
+	<div class="sort1" data-xh="0">这里是坑位一</div>
+	<div class="sort1" data-xh="1">这里是坑位二</div>
+	<div class="sort1" data-xh="4">这里是坑位三</div>
+	<div class="sort1" data-xh="3">这里是坑位四</div>
+	<div class="sort1" data-xh="2">这里是坑位五</div>
+</div>
+-----------------倒序-----------------
+<ul class="sortwrapper2">
+	<li class="sort2" data-xh="3">3</li>
+	<li class="sort2" data-xh="4">4</li>
+	<li class="sort2" data-xh="0">0</li>
+	<li class="sort2" data-xh="1">1</li>
+	<li class="sort2" data-xh="2">2</li>
+</ul>
+<a href="javascript:void(0)" class="J_resort">点击重新随机</a>
+<script>
+KISSY.add("js_sort",function(S,Node){
+/*
+*********KISSY版本：1.4.X**********
+
+@author:陈攀松
+@name:js根据指定的序号排序，或者随机
+@param obj排序对象属性包含obj.pa:父节点的class名,obj.node:子节点的class名,obj.me:排序方式,0:随机,1:正序,2:倒序;示例:{pa:"sortwrapper2",node:"sort2",me:2}
+@html 依赖结构：<div class="sortwrapper1">
+					<div class="sort1" data-xh="0">0</div>
+					<div class="sort1" data-xh="1">1</div>
+					<div class="sort1" data-xh="4">4</div>
+					<div class="sort1" data-xh="3">3</div>
+					<div class="sort1" data-xh="2">2</div>
+				</div>
+************************************
+*/
+	var $=S.all;
+	function js_sort(obj){
+		var o=this;
+		o.pa=obj.pa||"sortwrapper";o.node=obj.node||"sort";o.me=obj.me||0;o.div=obj.ele||"div";/*me代表排序方式,0:随机,1:正序,2:倒序*/
+		o.arr=[];
+		o.createarr=function(){
+			o.arr=[];
+			$("."+o.node).each(function(){
+				var doc=$(this).html(),num=parseInt($(this).attr("data-xh")),insert={};
+				insert.num=num;insert.html='<'+o.div+' class="'+o.node+'" data-xh="'+num+'">'+doc+'</'+o.div+'>';
+				o.arr.push(insert);
+			});
+		};
+		o.sorts=function(){
+			o.createarr();
+			switch(o.me){
+				case 0:o.arr.sort(function(a,b) {return Math.random()>.5 ? -1 : 1;});break;
+				case 1:o.arr.sort(function(a,b){  return a.num - b.num;});break;
+				case 2:o.arr.sort(function(a,b){  return b.num - a.num;});break;
+				default:;
+			};
+			$("."+o.pa).html("");
+			for(var i=0;i<o.arr.length;i++)
+			{
+				$("."+o.pa).append(o.arr[i].html);
+			}
+		};
+		o.sorts();
+	};
+	return js_sort;
+},{require:['node']});
+</script>
+<script>
+
+KISSY.use('node,js_sort',function(S,Node,_Sort){
+var $=S.all;
+
+var sort1=new _Sort({
+				pa:"sortwrapper",
+				node:"sort",
+				me:0,
+				ele:"div"
+			});
+$(".J_resort").on("click",function(){
+	sort1.sorts();
+});
+
+var sort2=new _Sort({
+				pa:"sortwrapper1",
+				node:"sort1",
+				me:1,
+				ele:"div"
+			});
+var sort3=new _Sort({
+				pa:"sortwrapper2",
+				node:"sort2",
+				me:2,
+				ele:"li"
+			});
+});        	
+</script>
+</body>
+</html>

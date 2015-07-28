@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link rel="stylesheet" href="http://g.tbcdn.cn/??tb/global/2.6.10/global-min.css,tb/tb-fp/1.8.3/style-min.css?t=20140305" type="text/css" />
+<style type="text/css">
+#page{ width:100%;}
+#content{ width:100%;}
+#header{ width:990px;} 
+.by_wrapper{height:auto;overflow:hidden;}
+.by_w990{width:990px;height:auto;margin:0 auto;}  
+
+
+
+.by-sitenav{width:154px;height:175px;position:fixed;left:50%;margin-left:520px;top:50%;margin-top:-87px;z-index:999;background:url("http://gtms01.alicdn.com/tps/i1/TB1q_heGpXXXXc4XpXXthtXNXXX-154-175.png");display:none;z-index:1;}
+.by-sitenav a{display:block;background:url("about:blank");position:absolute;height:35px;width:112px;left:8px;}
+.by-sitenav a.link{}
+.by-sitenav a.active{background:url("http://gtms04.alicdn.com/tps/i4/TB1RQBlGpXXXXXOXXXXZNyNFFXX-24-23.png") no-repeat 5px 5px;}
+.by-sitenav a.nav-item1{top:26px;}
+.by-sitenav a.nav-item2{top:63px;}
+.by-sitenav a.nav-item3{bottom:14px;}
+.navscale{-webkit-animation:navscale .5s linear;-moz-animation:navscale .5s linear;-ms-animation:navscale .5s linear;animation:navscale .5s linear}@keyframes navscale /* Safari 和 Chrome */{from{transform:scale(0)}to{transform:scale(1)}}@-webkit-keyframes navscale /* Safari 和 Chrome */{from{transform:scale(0)}to{transform:scale(1)}}@-moz-keyframes navscale /* Safari 和 Chrome */{from{transform:scale(0)}to{transform:scale(1)}}@-ms-keyframes navscale /* Safari 和 Chrome */{from{transform:scale(0)}to{transform:scale(1)}}.navscale2{-webkit-animation:navscale2 .5s linear;-moz-animation:navscale2 .5s linear;-ms-animation:navscale2 .5s linear;animation:navscale2 .5s linear}@keyframes navscale2 /* Safari 和 Chrome */{from{transform:scale(1)}to{transform:scale(0)}}@-webkit-keyframes navscale2 /* Safari 和 Chrome */{from{transform:scale(1)}to{transform:scale(0)}}@-moz-keyframes navscale2 /* Safari 和 Chrome */{from{transform:scale(1)}to{transform:scale(0)}}@-ms-keyframes navscale2 /* Safari 和 Chrome */{from{transform:scale(1)}to{transform:scale(0)}}
+</style>
+<script src="http://g.tbcdn.cn/??kissy/k/1.4.0/seed-min.js,tb/global/2.6.12/global-min.js"></script>
+</head>
+<body>
+<!--模板-->
+<div class="by_wrapper module" data-spm="$spm_module_id" >
+    
+    <div id="aa" style="height:1000px;"></div>
+    <div id="bb" style="height:1000px;"></div>
+
+
+    
+    <div class="by-sitenav">
+        <a href="#aa" class="nav-item1 link active"></a>
+        <a href="#bb" class="nav-item2 link"></a>
+        <a href="javascript:void(0)" id="gotop" class="nav-item3"></a>
+    </div>
+
+
+</div>    
+<!---->    
+<script>
+KISSY.use("node",function(S,Node){
+var $=S.all;
+     var Nav={
+        top:300,
+        speed:0.3,
+        navobj:$(".by-sitenav"),
+        gotopbtn:$("#gotop"),
+        gotop:function(){
+            var o=this;
+            this.gotopbtn.on("click",function(){
+                $(window).animate({"scrollTop":0},.5);
+                o.navobj.all("a").removeClass("active");
+                o.navobj.all("a").item(0).addClass("active");
+            });
+        },
+        choose:function(){
+            var o=this;
+            o.navobj.all(".link").on("click",function(){
+                o.navobj.all("a").removeClass("active");
+                $(this).addClass("active");
+            });
+        },
+        init:function(){
+            var o=this;
+            o.choose();
+            $(window).on("scroll",function(){
+                var sctop=$(window).scrollTop();
+                if(sctop>=o.top)
+                {o.navobj.css("display","block").removeClass("navscale2").addClass("navscale");}
+                else
+                {o.navobj.removeClass("navscale").addClass("navscale2").fadeOut(0.5);}  
+            });
+            o.gotop();
+        }
+    };
+    Nav.init();  
+});
+</script>
+</body>
+</html>

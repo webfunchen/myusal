@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<title></title>
+<head>    
+<link type="text/css" href="http://assets.taobaocdn.com/tbsp/reset-grids.css" rel="stylesheet" />
+<script src="http://g.tbcdn.cn/??kissy/k/1.4.1/seed-min.js,mui/global/1.2.35/global.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+.cps_container ul,.cps_container li,body,.cps_container p,iframe,dl,dt,dd{ padding: 0; margin: 0; }
+.cps_container ul,.cps_container li{list-style-type: none}
+.cps_container img{border: 0; display: block;width:100%;}
+.cps_container a{ text-decoration: none}
+.cps_container a:hover{ text-decoration: none}   
+.cps_container{ background: #FFFFFF; margin: 0 auto;min-width: 320px; max-width: 320px; position: relative}
+.cps_container img{}    
+a{ blr:expression(this.onFocus=this.blur()); /* IE Opera */ outline:none; /* FF Opera */ }
+area:focus{ -moz-outline-style: none; /* FF */ }
+area{ blr:expression(this.onFocus=this.blur()); /* IE Opera */ outline:none; /* FF Opera */ }
+area:focus{ -moz-outline-style: none; /* FF */ }
+
+
+/*弹窗*/
+.cps-mask{background:url("http://gtms01.alicdn.com/tps/i1/TB1NiJhGFXXXXaSXXXX301JJFXX-4-4.png") repeat;height:100%;left: 0;position: fixed;top: 0;width: 100%;display:none;z-index:999;}
+.cps-mask-title{height:40px;position:relative;z-index:1;background-color:#a50303;}
+.cps-mask-close{width:23px;height:23px;position:absolute;top:8px;right:10px;background:url("http://gtms04.alicdn.com/tps/i4/TB1oLf.GpXXXXazXXXXSmdpFFXX-23-24.png");display:block;cursor:pointer;}
+.cps-mask-content{border:5px solid #555;background:#fff;}
+
+</style>
+</head>
+<body>
+<div class="module" data-spm="$spm_module_id">  
+  <a href="javascript:;" class="showmask">点击显示弹窗</a>  
+</div>
+<script>
+KISSY.add("mobilemask",function(S,Node){
+  var $=S.all;
+  function mobilemask(obj){
+    var o=this;
+    o.width=obj.width||300;
+    o.height=obj.height||300;
+    o.node=$(".cps-mask");
+    o.content=obj.content||"content here";
+    o.mainnode=o.node.all(".cps-mask-content");
+    o.init=function(){
+      o.node=$(".cps-mask");
+      o.mainnode=o.node.all(".cps-mask-content");
+      var ww=$(window).width(),hh=$(window).height();
+      o.node.height(hh);
+      o.mainnode.css({"height":"auto","width":o.width,"overflow":"hidden","position":"fixed","left":"50%","top":"50%","margin-left":-o.width/2});
+      o.mainnode.css("margin-top",-o.mainnode.height()/2);
+      $(".cps-mask-close").on("click",function(){o.hide()});
+    }
+    o.render=function(){
+      $("body").append('<div class="cps-mask"><div class="cps-mask-content"><div class="cps-mask-title"><span class="cps-mask-close"></span></div>'+o.content+'</div></div>')
+      o.init();
+    };
+    o.destroy=function(){
+      o.node.remove();
+    };
+    o.show=function(){
+      //o.render();
+      o.node.css("display","block");
+      o.mainnode.css("margin-top",-o.mainnode.height()/2);
+    }
+    o.hide=function(){
+      o.node.css("display","none");
+      o.destroy();
+    }
+  }
+  return mobilemask;
+},
+{
+  requires:['node']
+}
+)
+KISSY.use("node,mobilemask",function(S,Node,_Maskmoblie){
+  
+  var mask1=new _Maskmoblie({
+    width:280,
+    height:400,
+    content:"<div style='text-align:center'><img src='http://gtms03.alicdn.com/tps/i3/TB1QjHGGpXXXXb_XFXXA6196pXX-438-131.png' width='90%'></div>"
+  });
+  S.all(".showmask").on("click",function(){
+    mask1.render();
+    mask1.show();
+  });
+  
+});
+
+</script>
+</body>
+</html>
